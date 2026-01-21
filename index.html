@@ -1,8 +1,7 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Diddy Clicker</title>
-
     <style>
         html, body {
             margin: 0;
@@ -38,7 +37,7 @@
 
         .help-btn {
             position: absolute;
-            top: 44px; /* just below top-cover */
+            top: 44px;
             left: 10px;
             background: #6b3e1e;
             color: #fff;
@@ -52,11 +51,11 @@
 
         .iframe-wrapper {
             position: absolute;
-            top: 38px; /* below top-cover */
+            top: 38px;
             left: 0;
             width: 100%;
             height: calc(100% - 38px);
-            overflow: hidden; /* hides Scratch top bar */
+            overflow: hidden;
         }
 
         .responsive-iframe {
@@ -65,11 +64,10 @@
             border: none;
         }
 
-        /* Rickroll overlay */
-        #rickroll-container {
+        #youtube-container {
             display: none;
             position: absolute;
-            top: 38px; /* below top-cover */
+            top: 38px;
             left: 0;
             width: 100%;
             height: calc(100% - 38px);
@@ -79,14 +77,13 @@
             z-index: 10;
         }
 
-        #rickroll-container video {
-            max-width: 80%;
-            max-height: 80%;
+        #youtube-container iframe {
+            width: 80%;
+            height: 45%;
             border-radius: 8px;
         }
     </style>
 </head>
-
 <body>
 
 <div class="top-cover">
@@ -95,41 +92,44 @@
     </marquee>
 </div>
 
-<!-- Help button -->
-<button class="help-btn" onclick="showRickroll()">Do you need help?</button>
+<button class="help-btn" onclick="showYouTube()">Do you need help?</button>
 
 <div class="iframe-wrapper">
     <iframe
-        class="responsive-iframe"
-        src="https://scratch.mit.edu/projects/1268723038/embed"
-        scrolling="no"
-        allowfullscreen>
+            class="responsive-iframe"
+            src="https://scratch.mit.edu/projects/1268723038/embed"
+            scrolling="no"
+            allowfullscreen>
     </iframe>
 </div>
 
-<!-- Rickroll overlay -->
-<div id="rickroll-container">
-   <video id="rickroll-video" autoplay muted playsinline>
-    <source src="https://archive.org/download/RickAstleyNeverGonnaGiveYouUp_201808/RickAstley-NeverGonnaGiveYouUp.mp4" type="video/mp4">
-    Your browser does not support HTML5 video.
-</video>
+<div id="youtube-container">
+    <iframe id="youtube-video"
+            src=""
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+    </iframe>
 </div>
 
 <script>
-function showRickroll() {
-    const container = document.getElementById('rickroll-container');
-    const video = document.getElementById('rickroll-video');
+    function showYouTube() {
+        const container = document.getElementById('youtube-container');
+        const iframe = document.getElementById('youtube-video');
 
-    container.style.display = 'flex';
-    video.currentTime = 0;
-    video.play();
+        // Replace VIDEO_ID with the actual YouTube video ID
+        const videoID = "Aq5WXmQQooo"; // Rickroll
+        // autoplay=1, mute=1 to force autoplay
+        iframe.src = `https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1`;
 
-    // Hide after ~13 seconds
-    setTimeout(() => {
-        video.pause();
-        container.style.display = 'none';
-    }, 13000);
-}
+        container.style.display = 'flex';
+
+        // Hide after ~13 seconds
+        setTimeout(() => {
+            iframe.src = ""; // stop video
+            container.style.display = 'none';
+        }, 13000);
+    }
 </script>
 
 </body>
