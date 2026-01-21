@@ -5,130 +5,77 @@
 
     <style>
         html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            background: #b8824a;
-            font-family: Arial, sans-serif;
-        }
+             margin: 0;
+             padding: 0;
+             height: 100%;
+             width: 100%;
+             background: #b8824a;
+             font-family: Arial, sans-serif;
+         }
 
-        marquee {
-            background: #a66a32;
-            color: #3a1f0d;
-            padding: 8px 0;
-            border-bottom: 6px solid #6b3e1e;
-        }
+         marquee {
+             background: #a66a32;
+             color: #3a1f0d;
+             padding: 8px 0;
+             border-bottom: 6px solid #6b3e1e;
+         }
 
-        marquee h1 {
-            margin: 0;
-            font-size: 40px;
-            font-weight: 900;
-        }
+         marquee h1 {
+             margin: 0;
+             font-size: 40px;
+             font-weight: 900;
+         }
 
-        .top-cover {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 38px;
-            background: #c8965f;
-            z-index: 2;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 10px;
-            box-sizing: border-box;
-        }
+         .top-cover {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 38px;
+             background: #c8965f;
+             z-index: 2;
+         }
 
-        .help-btn {
-            background: #6b3e1e;
-            color: #fff;
-            border: none;
-            padding: 5px 12px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
+         .responsive-iframe {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             border: none;
+         }
 
-        .iframe-wrapper {
-            position: absolute;
-            top: 38px; /* below top-cover */
-            left: 0;
-            width: 100%;
-            height: calc(100% - 38px);
-            overflow: hidden;
-        }
+         .iframe-wrapper {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             overflow: hidden;
+         }
 
-        .responsive-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Rickroll overlay */
-        #rickroll-container {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        #rickroll-container iframe {
-            width: 80%;
-            height: 45%;
-            border: none;
-            border-radius: 8px;
-        }
     </style>
 </head>
 
 <body>
 
-<div class="top-cover">
-    <marquee scrollamount="8">
-        <h1>DIDDY CLICKER</h1>
-    </marquee>
-    <button class="help-btn" onclick="showRickroll()">Do you need help?</button>
-</div>
 
-<div class="iframe-wrapper">
+<div class="container">
+    <div class="top-cover">
+
+        <marquee scrollamount="8">
+            <h1>DIDDY CLICKER</h1>
+        </marquee>
+
+    </div>
+
     <iframe
-        class="responsive-iframe"
-        src="https://scratch.mit.edu/projects/1268723038/embed"
-        scrolling="no"
-        allowfullscreen>
+            class="responsive-iframe"
+            src="https://scratch.mit.edu/projects/1268723038/embed"
+            scrolling="no"
+            allowfullscreen>
     </iframe>
 </div>
-
-<!-- Rickroll overlay -->
-<div id="rickroll-container">
-    <iframe id="rickroll-video"
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-        allow="autoplay; encrypted-media"
-        allowfullscreen>
-    </iframe>
-</div>
-
-<script>
-function showRickroll() {
-    const container = document.getElementById('rickroll-container');
-    container.style.display = 'flex'; // show overlay
-
-    // Stop the Rickroll after 13 seconds (roughly until "never gonna give you up, never gonna let you down")
-    setTimeout(() => {
-        container.style.display = 'none';
-        const iframe = document.getElementById('rickroll-video');
-        iframe.src = ""; // stop the video
-    }, 13000); // 13 seconds
-}
-</script>
 
 </body>
 </html>
