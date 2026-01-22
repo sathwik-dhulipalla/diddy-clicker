@@ -1,3 +1,3 @@
-# diddy-clicker
+# baby oil clicker
 
 ### By Sathwik
