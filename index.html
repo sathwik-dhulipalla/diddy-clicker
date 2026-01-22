@@ -117,14 +117,14 @@
         const container = document.getElementById('youtube-container');
         const iframe = document.getElementById('youtube-video');
 
-        // Replace VIDEO_ID with the actual YouTube video ID
+        
         const videoID = "Aq5WXmQQooo"; // Rickroll
-        // autoplay=1, mute=1 to force autoplay
+    
         iframe.src = `https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1`;
 
         container.style.display = 'flex';
 
-        // Hide after ~13 seconds
+    
         setTimeout(() => {
             iframe.src = ""; // stop video
             container.style.display = 'none';
