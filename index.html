@@ -7,40 +7,58 @@
 body{
     margin:0;
     font-family: Arial, sans-serif;
-    background:#2e7d32;
+    background:#1f7a1f;
 }
 
+/* TOP BAR */
 .topbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:90px;
     background:#1b5e20;
     color:white;
     text-align:center;
-    padding:15px;
-    font-size:30px;
+    font-size:34px;
     font-weight:bold;
+    line-height:90px;
+    z-index:5;
 }
 
-.button-area{
-    padding:10px;
+/* BUTTONS */
+.controls{
+    position:fixed;
+    top:90px;
+    left:0;
+    width:100%;
+    background:#2e7d32;
+    padding:8px;
+    z-index:5;
 }
 
 .btn{
-    background:#2e7d32;
+    background:#1b5e20;
     color:white;
     border:none;
     padding:8px 14px;
-    margin:5px;
-    cursor:pointer;
+    margin-right:8px;
     border-radius:5px;
+    cursor:pointer;
     font-weight:bold;
 }
 
 .btn:hover{
-    background:#1b5e20;
+    background:#145214;
 }
 
-.game-box{
+/* GAME */
+.game-area{
+    position:absolute;
+    top:150px;
+    left:0;
     width:100%;
-    height:calc(100vh - 140px);
+    height:calc(100vh - 150px);
 }
 
 iframe{
@@ -58,17 +76,17 @@ iframe{
     width:100%;
     height:100%;
     background:rgba(0,0,0,0.8);
+    z-index:10;
     justify-content:center;
     align-items:center;
-    z-index:10;
 }
 
 .popup-box{
     background:white;
     padding:20px;
     width:320px;
-    text-align:center;
     border-radius:10px;
+    text-align:center;
 }
 
 .popup-box h2{
@@ -77,48 +95,50 @@ iframe{
     padding-bottom:5px;
 }
 
-.leader-row{
+.row{
     display:flex;
     justify-content:space-between;
-    border-bottom:1px solid #ccc;
     padding:4px 0;
+    border-bottom:1px solid #ccc;
 }
 </style>
 </head>
 
 <body>
 
-<div class="topbar">💰 Money Clicker 💰</div>
+<div class="topbar">💰 MONEY CLICKER 💰</div>
 
-<div class="button-area">
+<div class="controls">
     <button class="btn" onclick="showLeaderboard()">Leaderboard</button>
-    <button class="btn" onclick="showHelp()">Do you need help?</button>
+    <button class="btn" onclick="showHelp()">Need Help?</button>
 </div>
 
-<div class="game-box">
+<div class="game-area">
     <iframe src="https://scratch.mit.edu/projects/1268723038/embed"></iframe>
 </div>
 
 <!-- LEADERBOARD -->
 <div class="popup" id="leaderboard">
     <div class="popup-box">
-        <h2>💰 Leaderboard</h2>
-        <div class="leader-row"><span>John</span><span>3409 ∞</span></div>
-        <div class="leader-row"><span>Mark</span><span>2046 ∞</span></div>
-        <div class="leader-row"><span>Amy</span><span>1095 ∞</span></div>
-        <div class="leader-row"><span>Ishaan</span><span>358 ∞</span></div>
-        <div class="leader-row"><span>Arya</span><span>200 ∞</span></div>
+        <h2>Leaderboard</h2>
+        <div class="row"><span>John</span><span>3409 ∞</span></div>
+        <div class="row"><span>Mark</span><span>2046 ∞</span></div>
+        <div class="row"><span>Amy</span><span>1095 ∞</span></div>
+        <div class="row"><span>Ishaan</span><span>358 ∞</span></div>
+        <div class="row"><span>Arya</span><span>200 ∞</span></div>
     </div>
 </div>
 
-<!-- HELP / RICKROLL -->
+<!-- HELP -->
 <div class="popup" id="helpBox">
     <div class="popup-box">
-        <iframe width="100%" height="200"
-        src=""
-        id="yt"
-        allow="autoplay"
-        allowfullscreen></iframe>
+        <iframe id="yt"
+            width="100%"
+            height="200"
+            src=""
+            allow="autoplay"
+            allowfullscreen>
+        </iframe>
     </div>
 </div>
 
@@ -126,10 +146,7 @@ iframe{
 function showLeaderboard(){
     let box = document.getElementById("leaderboard");
     box.style.display = "flex";
-
-    setTimeout(()=>{
-        box.style.display = "none";
-    },10000);
+    setTimeout(()=>box.style.display="none",10000);
 }
 
 function showHelp(){
