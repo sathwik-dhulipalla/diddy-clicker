@@ -1,3 +1,3 @@
-# baby oil clicker
+# money clicker
 
 ### By Sathwik
