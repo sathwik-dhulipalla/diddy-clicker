@@ -1,31 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
 <title>Money Clicker</title>
 
 <style>
-body{
-    margin:0;
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
     background: #1e7a1e;
     font-family: Arial, sans-serif;
-    background:#1f7a1f;
 }
 
-/* TOP BAR */
-.topbar{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:90px;
-    background:#1b5e20;
-    color:white;
-    text-align:center;
-    font-size:34px;
-    font-weight:bold;
-    line-height:90px;
-    z-index:5;
 /* HARD COVER FOR SCRATCH TOP BAR */
 .cover {
     position: fixed;
@@ -37,15 +23,6 @@ html, body {
     z-index: 20;
 }
 
-/* BUTTONS */
-.controls{
-    position:fixed;
-    top:90px;
-    left:0;
-    width:100%;
-    background:#2e7d32;
-    padding:8px;
-    z-index:5;
 /* MARQUEE */
 marquee {
     position: absolute;
@@ -58,15 +35,6 @@ marquee {
     padding: 8px 0;
 }
 
-.btn{
-    background:#1b5e20;
-    color:white;
-    border:none;
-    padding:8px 14px;
-    margin-right:8px;
-    border-radius:5px;
-    cursor:pointer;
-    font-weight:bold;
 /* BUTTON BAR */
 .controls {
     position: absolute;
@@ -78,8 +46,6 @@ marquee {
     z-index: 21;
 }
 
-.btn:hover{
-    background:#145214;
 button {
     background: #0f3d0f;
     color: white;
@@ -91,21 +57,10 @@ button {
     cursor: pointer;
 }
 
-/* GAME */
-.game-area{
-    position:absolute;
-    top:150px;
-    left:0;
-    width:100%;
-    height:calc(100vh - 150px);
 button:hover {
     background: #0b2c0b;
 }
 
-iframe{
-    width:100%;
-    height:100%;
-    border:none;
 /* GAME */
 .game {
     position: absolute;
@@ -114,30 +69,12 @@ iframe{
     height: calc(100vh - 140px);
 }
 
-/* POPUPS */
-.popup{
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.8);
-    z-index:10;
-    justify-content:center;
-    align-items:center;
 iframe {
     width: 100%;
     height: 100%;
     border: none;
 }
 
-.popup-box{
-    background:white;
-    padding:20px;
-    width:320px;
-    border-radius:10px;
-    text-align:center;
 /* POPUPS */
 .popup {
     display: none;
@@ -149,10 +86,6 @@ iframe {
     align-items: center;
 }
 
-.popup-box h2{
-    margin-top:0;
-    border-bottom:2px solid #333;
-    padding-bottom:5px;
 .popup-box {
     background: white;
     padding: 20px;
@@ -161,11 +94,6 @@ iframe {
     text-align: center;
 }
 
-.row{
-    display:flex;
-    justify-content:space-between;
-    padding:4px 0;
-    border-bottom:1px solid #ccc;
 .row {
     display: flex;
     justify-content: space-between;
@@ -177,21 +105,16 @@ iframe {
 
 <body>
 
-<div class="topbar">💰 MONEY CLICKER 💰</div>
 <!-- SCRATCH COVER -->
 <div class="cover">
     <marquee>💰 MONEY CLICKER 💰 MONEY CLICKER 💰 MONEY CLICKER 💰</marquee>
 
-<div class="controls">
-    <button class="btn" onclick="showLeaderboard()">Leaderboard</button>
-    <button class="btn" onclick="showHelp()">Need Help?</button>
     <div class="controls">
         <button onclick="openLeaderboard()">Leaderboard</button>
         <button onclick="openHelp()">Need Help?</button>
     </div>
 </div>
 
-<div class="game-area">
 <!-- GAME -->
 <div class="game">
     <iframe src="https://scratch.mit.edu/projects/1268723038/embed"></iframe>
@@ -200,22 +123,21 @@ iframe {
 <!-- LEADERBOARD -->
 <div class="popup" id="leaderboard">
     <div class="popup-box">
-        <h2>Leaderboard</h2>
         <h2>💰 Money Leaderboard</h2>
         <div class="row"><span>John</span><span>3409 ∞</span></div>
         <div class="row"><span>Mark</span><span>2046 ∞</span></div>
         <div class="row"><span>Amy</span><span>1095 ∞</span></div>
-@@ -130,36 +133,35 @@ <h2>Leaderboard</h2>
+        <div class="row"><span>Ishaan</span><span>358 ∞</span></div>
+        <div class="row"><span>Arya</span><span>200 ∞</span></div>
+    </div>
 </div>
 
 <!-- HELP -->
-<div class="popup" id="helpBox">
 <div class="popup" id="help">
     <div class="popup-box">
         <iframe id="yt"
             width="100%"
             height="200"
-            src=""
             allow="autoplay"
             allowfullscreen>
         </iframe>
@@ -223,18 +145,12 @@ iframe {
 </div>
 
 <script>
-function showLeaderboard(){
-    let box = document.getElementById("leaderboard");
 function openLeaderboard() {
     const box = document.getElementById("leaderboard");
     box.style.display = "flex";
-    setTimeout(()=>box.style.display="none",10000);
     setTimeout(() => box.style.display = "none", 10000);
 }
 
-function showHelp(){
-    let box = document.getElementById("helpBox");
-    let vid = document.getElementById("yt");
 function openHelp() {
     const box = document.getElementById("help");
     const vid = document.getElementById("yt");
@@ -242,11 +158,12 @@ function openHelp() {
     vid.src = "https://www.youtube.com/embed/Aq5WXmQQooo?autoplay=1";
     box.style.display = "flex";
 
-    setTimeout(()=>{
     setTimeout(() => {
         vid.src = "";
         box.style.display = "none";
-    },10000);
     }, 10000);
 }
 </script>
+
+</body>
+</html>
