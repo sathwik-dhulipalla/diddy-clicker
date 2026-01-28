@@ -10,7 +10,6 @@ body{
     background:#2e7d32;
 }
 
-/* TOP BAR */
 .topbar{
     background:#1b5e20;
     color:white;
@@ -20,7 +19,10 @@ body{
     font-weight:bold;
 }
 
-/* BUTTONS */
+.button-area{
+    padding:10px;
+}
+
 .btn{
     background:#2e7d32;
     color:white;
@@ -36,12 +38,6 @@ body{
     background:#1b5e20;
 }
 
-/* BUTTON AREA */
-.button-area{
-    padding:10px;
-}
-
-/* GAME AREA */
 .game-box{
     width:100%;
     height:calc(100vh - 140px);
@@ -64,23 +60,35 @@ iframe{
     background:rgba(0,0,0,0.8);
     justify-content:center;
     align-items:center;
+    z-index:10;
 }
 
 .popup-box{
     background:white;
     padding:20px;
-    width:300px;
+    width:320px;
     text-align:center;
     border-radius:10px;
+}
+
+.popup-box h2{
+    margin-top:0;
+    border-bottom:2px solid #333;
+    padding-bottom:5px;
+}
+
+.leader-row{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid #ccc;
+    padding:4px 0;
 }
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
-💰 Money Clicker 💰
-</div>
+<div class="topbar">💰 Money Clicker 💰</div>
 
 <div class="button-area">
     <button class="btn" onclick="showLeaderboard()">Leaderboard</button>
@@ -95,21 +103,22 @@ iframe{
 <div class="popup" id="leaderboard">
     <div class="popup-box">
         <h2>💰 Leaderboard</h2>
-        <p>John – 3409 Infinity</p>
-        <p>Mark – 2046 Infinity</p>
-        <p>Amy – 1095 Infinity</p>
-        <p>Ishaan – 358 Infinity</p>
-        <p>Arya – 200 Infinity</p>
+        <div class="leader-row"><span>John</span><span>3409 ∞</span></div>
+        <div class="leader-row"><span>Mark</span><span>2046 ∞</span></div>
+        <div class="leader-row"><span>Amy</span><span>1095 ∞</span></div>
+        <div class="leader-row"><span>Ishaan</span><span>358 ∞</span></div>
+        <div class="leader-row"><span>Arya</span><span>200 ∞</span></div>
     </div>
 </div>
 
-<!-- HELP -->
+<!-- HELP / RICKROLL -->
 <div class="popup" id="helpBox">
     <div class="popup-box">
-        <h2>Help</h2>
-        <p>Click the money to earn more.</p>
-        <p>Buy upgrades inside the game.</p>
-        <p>Try to reach infinity!</p>
+        <iframe width="100%" height="200"
+        src=""
+        id="yt"
+        allow="autoplay"
+        allowfullscreen></iframe>
     </div>
 </div>
 
@@ -125,9 +134,13 @@ function showLeaderboard(){
 
 function showHelp(){
     let box = document.getElementById("helpBox");
+    let vid = document.getElementById("yt");
+
+    vid.src = "https://www.youtube.com/embed/Aq5WXmQQooo?autoplay=1";
     box.style.display = "flex";
 
     setTimeout(()=>{
+        vid.src = "";
         box.style.display = "none";
     },10000);
 }
@@ -135,4 +148,3 @@ function showHelp(){
 
 </body>
 </html>
-
