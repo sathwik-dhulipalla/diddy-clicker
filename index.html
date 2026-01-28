@@ -1,121 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Money Clicker</title>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background: #4caf50;
-            font-family: Arial, sans-serif;
-        }
+<title>Money Clicker</title>
 
-        /* TOP BAR */
-        .top-cover {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            background: #2e7d32;
-            z-index: 2;
-        }
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#2e7d32;
+}
 
-        marquee {
-            color: #eaffea;
-            padding: 6px 0;
-            border-bottom: 6px solid #1b5e20;
-        }
+/* TOP BAR */
+.topbar{
+    background:#1b5e20;
+    color:white;
+    text-align:center;
+    padding:15px;
+    font-size:30px;
+    font-weight:bold;
+}
 
-        marquee h1 {
-            margin: 0;
-            font-size: 36px;
-        }
+/* BUTTONS */
+.btn{
+    background:#2e7d32;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    margin:5px;
+    cursor:pointer;
+    border-radius:5px;
+    font-weight:bold;
+}
 
-        /* BUTTONS */
-        .btn {
-            position: absolute;
-            left: 10px;
-            background: #1b5e20;
-            color: white;
-            border: none;
-            padding: 7px 14px;
-            font-size: 14px;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 5;
-        }
+.btn:hover{
+    background:#1b5e20;
+}
 
-        .leaderboard-btn { top: 50px; }
-        .help-btn { top: 90px; }
+/* BUTTON AREA */
+.button-area{
+    padding:10px;
+}
 
-        .btn:hover {
-            background: #145214;
-        }
+/* GAME AREA */
+.game-box{
+    width:100%;
+    height:calc(100vh - 140px);
+}
 
-        /* GAME */
-        .iframe-wrapper {
-            position: absolute;
-            top: 40px;
-            width: 100%;
-            height: calc(100% - 40px);
-        }
+iframe{
+    width:100%;
+    height:100%;
+    border:none;
+}
 
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+/* POPUPS */
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    justify-content:center;
+    align-items:center;
+}
 
-        /* POPUPS */
-        .popup {
-            display: none;
-            position: absolute;
-            top: 40px;
-            left: 0;
-            width: 100%;
-            height: calc(100% - 40px);
-            background: rgba(0,0,0,0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-            color: white;
-        }
-
-        .popup-box {
-            background: #2e7d32;
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
-            text-align: center;
-        }
-
-        .popup h2 {
-            margin-top: 0;
-        }
-    </style>
+.popup-box{
+    background:white;
+    padding:20px;
+    width:300px;
+    text-align:center;
+    border-radius:10px;
+}
+</style>
 </head>
 
 <body>
 
-<div class="top-cover">
-    <marquee scrollamount="8">
-        <h1>💰 Money Clicker 💰</h1>
-    </marquee>
+<div class="topbar">
+💰 Money Clicker 💰
 </div>
 
-<button class="btn leaderboard-btn" onclick="showLeaderboard()">Leaderboard</button>
-<button class="btn help-btn" onclick="showHelp()">Do you need help?</button>
+<div class="button-area">
+    <button class="btn" onclick="showLeaderboard()">Leaderboard</button>
+    <button class="btn" onclick="showHelp()">Do you need help?</button>
+</div>
 
-<div class="iframe-wrapper">
+<div class="game-box">
     <iframe src="https://scratch.mit.edu/projects/1268723038/embed"></iframe>
 </div>
 
 <!-- LEADERBOARD -->
-<div id="leaderboard" class="popup">
+<div class="popup" id="leaderboard">
     <div class="popup-box">
-        <h2>💸 Infinity Money</h2>
+        <h2>💰 Leaderboard</h2>
         <p>John – 3409 Infinity</p>
         <p>Mark – 2046 Infinity</p>
         <p>Amy – 1095 Infinity</p>
@@ -124,4 +103,36 @@
     </div>
 </div>
 
-<!
+<!-- HELP -->
+<div class="popup" id="helpBox">
+    <div class="popup-box">
+        <h2>Help</h2>
+        <p>Click the money to earn more.</p>
+        <p>Buy upgrades inside the game.</p>
+        <p>Try to reach infinity!</p>
+    </div>
+</div>
+
+<script>
+function showLeaderboard(){
+    let box = document.getElementById("leaderboard");
+    box.style.display = "flex";
+
+    setTimeout(()=>{
+        box.style.display = "none";
+    },10000);
+}
+
+function showHelp(){
+    let box = document.getElementById("helpBox");
+    box.style.display = "flex";
+
+    setTimeout(()=>{
+        box.style.display = "none";
+    },10000);
+}
+</script>
+
+</body>
+</html>
+
