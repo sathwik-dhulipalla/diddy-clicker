@@ -1,168 +1,135 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Money Clicker</title>
+    <title>Baby Oil Clicker</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background: #b8824a;
+            font-family: Arial, sans-serif;
+        }
 
-<style>
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background: #1e7a1e;
-    font-family: Arial, sans-serif;
-}
+        marquee {
+            background: #a66a32;
+            color: #3a1f0d;
+            padding: 8px 0;
+            border-bottom: 6px solid #6b3e1e;
+        }
 
-/* HARD COVER FOR SCRATCH TOP BAR */
-.cover {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 120px;
-    width: 100%;
-    background: #145214;
-    z-index: 20;
-}
+        marquee h1 {
+            margin: 0;
+            font-size: 40px;
+            font-weight: 900;
+        }
 
-/* MARQUEE */
-marquee {
-    position: absolute;
-    top: 35px;
-    width: 100%;
-    background: #2e8b2e;
-    color: white;
-    font-size: 34px;
-    font-weight: bold;
-    padding: 8px 0;
-}
+        .top-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 38px;
+            background: #c8965f;
+            z-index: 2;
+        }
 
-/* BUTTON BAR */
-.controls {
-    position: absolute;
-    top: 85px;
-    left: 0;
-    width: 100%;
-    padding: 8px;
-    background: #1b5e20;
-    z-index: 21;
-}
+        .help-btn {
+            position: absolute;
+            top: 44px;
+            left: 10px;
+            background: #6b3e1e;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            z-index: 5;
+        }
 
-button {
-    background: #0f3d0f;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    margin-right: 10px;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-}
+        .iframe-wrapper {
+            position: absolute;
+            top: 38px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 38px);
+            overflow: hidden;
+        }
 
-button:hover {
-    background: #0b2c0b;
-}
+        .responsive-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
 
-/* GAME */
-.game {
-    position: absolute;
-    top: 140px;
-    width: 100%;
-    height: calc(100vh - 140px);
-}
+        #youtube-container {
+            display: none;
+            position: absolute;
+            top: 38px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 38px);
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
 
-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-/* POPUPS */
-.popup {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.8);
-    z-index: 50;
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-box {
-    background: white;
-    padding: 20px;
-    width: 300px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.row {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #ccc;
-    padding: 5px 0;
-}
-</style>
+        #youtube-container iframe {
+            width: 80%;
+            height: 45%;
+            border-radius: 8px;
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- SCRATCH COVER -->
-<div class="cover">
-    <marquee>💰 MONEY CLICKER 💰 MONEY CLICKER 💰 MONEY CLICKER 💰</marquee>
-
-    <div class="controls">
-        <button onclick="openLeaderboard()">Leaderboard</button>
-        <button onclick="openHelp()">Need Help?</button>
-    </div>
+<div class="top-cover">
+    <marquee scrollamount="8">
+        <h1>Baby Oil Clicker</h1>
+    </marquee>
 </div>
 
-<!-- GAME -->
-<div class="game">
-    <iframe src="https://scratch.mit.edu/projects/1268723038/embed"></iframe>
-</div>
+<button class="help-btn" onclick="showYouTube()">Do you need help?</button>
 
-<!-- LEADERBOARD -->
-<div class="popup" id="leaderboard">
-    <div class="popup-box">
-        <h2>💰 Money Leaderboard</h2>
-        <div class="row"><span>John</span><span>3409 ∞</span></div>
-        <div class="row"><span>Mark</span><span>2046 ∞</span></div>
-        <div class="row"><span>Amy</span><span>1095 ∞</span></div>
-        <div class="row"><span>Ishaan</span><span>358 ∞</span></div>
-        <div class="row"><span>Arya</span><span>200 ∞</span></div>
-    </div>
-</div>
-
-<!-- HELP -->
-<div class="popup" id="help">
-    <div class="popup-box">
-        <iframe id="yt"
-            width="100%"
-            height="200"
-            allow="autoplay"
+<div class="iframe-wrapper">
+    <iframe
+            class="responsive-iframe"
+            src="https://scratch.mit.edu/projects/1268723038/embed"
+            scrolling="no"
             allowfullscreen>
-        </iframe>
-    </div>
+    </iframe>
+</div>
+
+<div id="youtube-container">
+    <iframe id="youtube-video"
+            src=""
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+    </iframe>
 </div>
 
 <script>
-function openLeaderboard() {
-    const box = document.getElementById("leaderboard");
-    box.style.display = "flex";
-    setTimeout(() => box.style.display = "none", 10000);
-}
+    function showYouTube() {
+        const container = document.getElementById('youtube-container');
+        const iframe = document.getElementById('youtube-video');
 
-function openHelp() {
-    const box = document.getElementById("help");
-    const vid = document.getElementById("yt");
+        
+        const videoID = "Aq5WXmQQooo"; // Rickroll
+    
+        iframe.src = `https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1`;
 
-    vid.src = "https://www.youtube.com/embed/Aq5WXmQQooo?autoplay=1";
-    box.style.display = "flex";
+        container.style.display = 'flex';
 
-    setTimeout(() => {
-        vid.src = "";
-        box.style.display = "none";
-    }, 10000);
-}
+    
+        setTimeout(() => {
+            iframe.src = ""; // stop video
+            container.style.display = 'none';
+        }, 13000);
+    }
 </script>
 
 </body>
